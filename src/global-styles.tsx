@@ -23,7 +23,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   body{
     font-family: 'Rubik', sans-serif;
-    color:var(--white);
+    color:var(--black);
   }
   html{
     background-color:#f9f9f9;

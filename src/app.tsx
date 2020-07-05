@@ -1,9 +1,17 @@
 import * as React from 'react';
-import { Container } from './containers/content';
+import { Router } from '@reach/router';
+import { Login } from './pages/Login';
+import { Search } from './pages/Search';
+
 import { GlobalStyle } from './global-styles';
 
+
 export const App = () => (
-    <GlobalStyle >
-      <Container />
-    </GlobalStyle>
-)
+  <>  
+    <GlobalStyle />
+    <Router>
+      <Login path="/" />
+      <Search path="/main" />
+    </Router>
+  </>
+);

@@ -181,3 +181,4 @@ $RECYCLE.BIN/
 .DS_Store
 dist
 .vercel
+package-lock.json
