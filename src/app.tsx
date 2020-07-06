@@ -2,16 +2,31 @@ import * as React from 'react';
 import { Router } from '@reach/router';
 import { Login } from './pages/Login';
 import { Search } from './pages/Search';
+import Context from './context';
 
 import { GlobalStyle } from './global-styles';
 
-
 export const App = () => (
-  <>  
-    <GlobalStyle />
-    <Router>
-      <Login path="/" />
-      <Search path="/main" />
-    </Router>
-  </>
+  <Context.Consumer>
+    {({ isAuth, activateAuth }) => {
+      if (!isAuth) {
+        return (
+          <>
+            <GlobalStyle />
+            <Router>
+              <Login auth={activateAuth} path="/" />
+            </Router>
+          </>
+        );
+      }
+      return (
+        <>
+          <GlobalStyle />
+          <Router>
+            <Search path="/" />
+          </Router>
+        </>
+      );
+    }}
+  </Context.Consumer>
 );
