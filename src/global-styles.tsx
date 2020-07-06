@@ -7,6 +7,9 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
     font-weight: normal;
   }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
   :root{
     --black: #011627; 
     --white:#FDFFFC;
@@ -27,6 +30,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   html{
     background-color:#f9f9f9;
+    box-sizing: border-box;
   }
 
 `;

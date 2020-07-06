@@ -9,16 +9,19 @@ export const Login = ({ path }: Router) => {
   const user = useInputValue('');
   const pass = useInputValue('');
   const [error, setError] = React.useState(false);
+  React.useEffect(() => { 
+    const session = localStorage.getItem('session');
+    if (session !== null) navigate('/main');
+  }, []);
 
   const sessionValidator = e => {
     e.preventDefault();
     if (user.value === pass.value) {
       localStorage.setItem('session', 'hags');
-      navigate('/main/');
+      navigate('/main');
     } else { 
       setError(true);
     }
-    
   };
 
   return (
