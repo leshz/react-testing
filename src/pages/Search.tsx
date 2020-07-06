@@ -4,12 +4,15 @@ import { Container } from '../containers';
 import { MovieContainer } from '../components/MoviePreviewContainer';
 import { Search } from '../components/Search';
 import { Data } from '../interfaces/interfaces';
-import Context from '../Context';
 import { FavsWrap } from '../components/FavsContainer';
 
 export const SearchPage = (props) => {
   const [error, setError] = React.useState(false);
   const [data, setData] = React.useState<Data[]>([]);
+
+  const favsFromStorage = localStorage.getItem('favs');
+  const favsInfo = favsFromStorage !== null ? JSON.parse(favsFromStorage) : [];
+  const [favorites, setFavorites] = React.useState(favsInfo);
 
   const handlerSubmitForm = (value) => {
     setError(false);
@@ -31,27 +34,18 @@ export const SearchPage = (props) => {
     }
   };
 
-  return (
-    <Context.Consumer>
-      {({ Favorites = [] }) => {
-        console.log(Favorites);
+  const addFavorites = (item) => {
+    const favs = favorites.concat(item);
+    localStorage.setItem('favs', JSON.stringify(favs));
 
-        if (Favorites.length > 0) {
-          return (
-            <Container>
-              <FavsWrap favs={Favorites} />
-              <Search submit={handlerSubmitForm} />
-              <MovieContainer error={error} data={data} />
-            </Container>
-          );
-        }
-        return (
-          <Container>
-            <Search submit={handlerSubmitForm} />
-            <MovieContainer error={error} data={data} />
-          </Container>
-        );
-      }}
-    </Context.Consumer>
+    setFavorites(favs);
+  };
+
+  return (
+    <Container>
+      {favorites.length > 0 && <FavsWrap favs={favorites} />}
+      <Search submit={handlerSubmitForm} />
+      <MovieContainer error={error} add={addFavorites} data={data} />
+    </Container>
   );
 };

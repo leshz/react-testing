@@ -2,13 +2,11 @@ import * as React from 'react';
 import { MovieWrap, ErrorMessage } from './style';
 import { MoviePreview } from '../MoviePreviewItem';
 
-import Context from '../../Context';
-
-export const MovieContainer = ({ data, error }) => {
-  const viewsMoviesInfo = (add) => {
+export const MovieContainer = ({ data, error, add }) => {
+  const viewsMoviesInfo = (addFunction) => {
     if (data.length > 0) {
       return data.map((item) => (
-        <MoviePreview {...item} add={add} key={item.imdbID} />
+        <MoviePreview {...item} add={addFunction} key={item.imdbID} />
       ));
     }
     if (error) {
@@ -24,11 +22,5 @@ export const MovieContainer = ({ data, error }) => {
     return <h2>Busca tus peliculas favoritas </h2>;
   };
 
-  return (
-    <Context.Consumer>
-      {({ addFavorites }) => {
-        return <MovieWrap>{viewsMoviesInfo(addFavorites)}</MovieWrap>;
-      }}
-    </Context.Consumer>
-  );
+  return <MovieWrap>{viewsMoviesInfo(add)}</MovieWrap>;
 };
