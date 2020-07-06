@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MovieWrap, ErrorMessage } from './style';
 import { MoviePreview } from '../MoviePreviewItem';
-import { FavsWrap } from '../FavsContainer';
+
 import Context from '../../Context';
 
 export const MovieContainer = ({ data, error }) => {
@@ -26,8 +26,8 @@ export const MovieContainer = ({ data, error }) => {
 
   return (
     <Context.Consumer>
-      {({ favs, addFav }) => {
-        return <MovieWrap {...favs}>{viewsMoviesInfo(addFav)}</MovieWrap>;
+      {({ addFavorites }) => {
+        return <MovieWrap>{viewsMoviesInfo(addFavorites)}</MovieWrap>;
       }}
     </Context.Consumer>
   );
