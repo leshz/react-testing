@@ -9,6 +9,7 @@ const Provider = ({ children }) => {
 
   const [isAuth, setAuth] = React.useState(user);
   const [favs, setFavs] = React.useState(favsInfo);
+
   const value = {
     isAuth,
     activateAuth: () => {
@@ -18,6 +19,7 @@ const Provider = ({ children }) => {
     addFav: (item) => {
       const newFav = favs;
       newFav.push(item);
+      // localStorage.getItem()
       setFavs(newFav);
     },
   };

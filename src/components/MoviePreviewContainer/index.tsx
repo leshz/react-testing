@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { MovieWrap, ErrorMessage } from './style';
 import { MoviePreview } from '../MoviePreviewItem';
+import { FavsWrap } from '../FavsContainer';
 import Context from '../../Context';
 
 export const MovieContainer = ({ data, error }) => {
@@ -13,7 +14,7 @@ export const MovieContainer = ({ data, error }) => {
     if (error) {
       return (
         <ErrorMessage>
-          No encontramos resultado{' '}
+          No encontramos resultado
           <span role="img" aria-label="sad face">
             😅
           </span>
@@ -22,11 +23,24 @@ export const MovieContainer = ({ data, error }) => {
     }
     return <h2>Busca tus peliculaas favoritas </h2>;
   };
+
   return (
     <Context.Consumer>
-      {({ favs, addFav }) => {
-        console.log(favs);
-        return <MovieWrap>{viewsMoviesInfo(addFav)}</MovieWrap>;
+      {({ isAuth, favs, addFav }) => {
+        console.log(favs, 'container');
+        return (
+          <MovieWrap>
+            {viewsMoviesInfo(addFav)}
+            <button
+              type="button"
+              onClick={() => {
+                addFav({ coco: 'coco' });
+              }}
+            >
+              cllick
+            </button>
+          </MovieWrap>
+        );
       }}
     </Context.Consumer>
   );
