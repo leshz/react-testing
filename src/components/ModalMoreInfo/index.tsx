@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { ModalPortal } from '../Modal';
 import { dataItem } from '../../interfaces/interfaces';
+import {
+  ContentWrap,
+  TextWrap,
+  TitleStyled,
+  PlotStyled,
+  Detail,
+} from './style';
 
 export const ModalMoreInfo = ({ show, onClose, movie }) => {
   const [info, setInfo] = React.useState<dataItem>();
@@ -24,17 +31,16 @@ export const ModalMoreInfo = ({ show, onClose, movie }) => {
   const buildModal = () => {
     const { Title, Poster, Director, Language, Awards, Plot } = info;
     return (
-      <div>
+      <ContentWrap>
         <img src={Poster} alt="" />
-        <div>
-          <h3>{Title}</h3>
-          <p>{Plot}</p>
-          <span>Director: {Director}</span>
-          <span>Director: {Director}</span>
-          <span>Awards:{Awards}</span>
-          <span>Language: {Language}</span>
-        </div>
-      </div>
+        <TextWrap>
+          <TitleStyled>{Title}</TitleStyled>
+          <PlotStyled>{Plot}</PlotStyled>
+          <Detail>Director: {Director}</Detail>
+          <Detail>Awards: {Awards}</Detail>
+          <Detail>Language: {Language}</Detail>
+        </TextWrap>
+      </ContentWrap>
     );
   };
 
