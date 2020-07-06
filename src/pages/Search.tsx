@@ -14,7 +14,7 @@ export const SearchPage = (props) => {
   const handlerSubmitForm = (value) => {
     setError(false);
     if (value !== '') {
-      fetch(`http://www.omdbapi.com/?apikey=f12ba140&s=${value}`)
+      fetch(`https://www.omdbapi.com/?apikey=f12ba140&s=${value}`)
         .then((success) => success.json())
         .then((resp) => {
           if (resp.Response === 'True') {

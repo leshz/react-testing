@@ -13,7 +13,7 @@ export const ModalMoreInfo = ({ show, onClose, movie }) => {
   const [info, setInfo] = React.useState<dataItem>();
   const [loading, setLoading] = React.useState(true);
   React.useEffect(() => {
-    fetch(`http://www.omdbapi.com/?apikey=f12ba140&i=${movie}`)
+    fetch(`https://www.omdbapi.com/?apikey=f12ba140&i=${movie}`)
       .then((success) => success.json())
       .then((resp) => {
         setInfo(resp);
