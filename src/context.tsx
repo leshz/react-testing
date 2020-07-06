@@ -8,7 +8,7 @@ const Provider = ({ children }) => {
   const favsInfo = favsFromStorage !== null ? JSON.parse(favsFromStorage) : [];
 
   const [isAuth, setAuth] = React.useState(user);
-  const [favs, setFavs] = React.useState(favsInfo);
+  const [Favorites, setFavorites] = React.useState(favsInfo);
 
   const value = {
     isAuth,
@@ -19,13 +19,14 @@ const Provider = ({ children }) => {
       sessionStorage.removeItem('session');
       localStorage.removeItem('favs');
       setAuth(false);
+      setFavorites([]);
     },
-    favs,
+    Favorites,
     addFav: (item) => {
-      const newFav = favs;
+      const newFav = Favorites;
       newFav.push(item);
       localStorage.setItem('favs', JSON.stringify(newFav));
-      setFavs(newFav);
+      setFavorites(newFav);
     },
   };
 
