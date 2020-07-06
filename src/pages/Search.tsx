@@ -5,7 +5,7 @@ import { useInputValue } from '../hooks/useInputValue';
 
 import { MovieContainer } from '../components/MoviePreviewContainer';
 
-export const Search = (props: Router) => {
+export const Search = (props) => {
   const search = useInputValue('');
   const [data, setData] = React.useState<Data[]>([
     {

@@ -4,7 +4,7 @@ import { Data } from '../../interfaces/interfaces';
 import { ModalMoreInfo } from '../ModalMoreInfo';
 import { MovieItem, Infomation, TitleItem, Button, ButtonWrap } from './style';
 
-export const MoviePreview = ({ Title, Poster, Year, imdbID }: Data) => {
+export const MoviePreview = ({ Title, Poster, Year, imdbID, add }: Data) => {
   const [show, setShow] = React.useState(false);
   const imagenRender = () => {
     if (Poster !== 'N/A') {
@@ -18,7 +18,9 @@ export const MoviePreview = ({ Title, Poster, Year, imdbID }: Data) => {
     );
   };
 
-  const addToFavorites = () => {};
+  const addToFavorites = () => {
+    add({ Title, Poster, Year, imdbID });
+  };
 
   const showMoreInformation = () => {
     setShow(true);

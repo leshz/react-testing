@@ -9,6 +9,7 @@ export interface Data {
   Type: string;
   Year: string;
   imdbID: string;
+  add?: (data: unknown) => void;
 }
 export interface dataItem {
   Title?: string;

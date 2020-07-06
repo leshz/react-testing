@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Router } from '@reach/router';
 import { Login } from './pages/Login';
 import { Search } from './pages/Search';
-import Context from './context';
+import Context from './Context';
 
 import { GlobalStyle } from './global-styles';
 
