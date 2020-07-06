@@ -15,6 +15,11 @@ const Provider = ({ children }) => {
     activateAuth: () => {
       setAuth(true);
     },
+    logout: () => {
+      sessionStorage.removeItem('session');
+      localStorage.removeItem('favs');
+      setAuth(false);
+    },
     favs,
     addFav: (item) => {
       const newFav = favs;
