@@ -90,7 +90,8 @@ export const Search = (props: Router) => {
     },
   ]);
   const [error, setError] = React.useState(false);
-  const handlerClickSubmitButton = () => {
+  const handlerSubmitForm = (e) => {
+    e.preventDefault();
     setError(false);
     if (search.value !== '') {
       fetch(`http://www.omdbapi.com/?apikey=f12ba140&s=${search.value}`)
@@ -108,10 +109,10 @@ export const Search = (props: Router) => {
   return (
     <>
       <HeaderNav />
-      <input type="text" placeholder="Buscar pelicula" {...search} />
-      <button onClick={handlerClickSubmitButton} type="button">
-        Buscar
-      </button>
+      <form onSubmit={handlerSubmitForm}>
+        <input type="text" placeholder="Buscar pelicula" {...search} />
+        <button type="submit">Buscar</button>
+      </form>
       <MovieContainer error={error} data={data} />
     </>
   );

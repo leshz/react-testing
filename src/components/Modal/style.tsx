@@ -54,7 +54,7 @@ export const ModalContent = styled.div`
   position: fixed;
   width: 100%;
   height: auto;
-  max-width: 450px;
+  max-width: 650px;
   color: var(--black);
   background: #fff;
   border-radius: 5px;

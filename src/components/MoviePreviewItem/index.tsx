@@ -4,7 +4,7 @@ import { Data } from '../../interfaces/interfaces';
 import { ModalMoreInfo } from '../ModalMoreInfo';
 import { MovieItem, Infomation, TitleItem, Button, ButtonWrap } from './style';
 
-export const MoviePreview = ({ Title, Poster, Type, Year, imdbID }: Data) => {
+export const MoviePreview = ({ Title, Poster, Year, imdbID }: Data) => {
   const [show, setShow] = React.useState(false);
   const imagenRender = () => {
     if (Poster !== 'N/A') {
@@ -45,7 +45,9 @@ export const MoviePreview = ({ Title, Poster, Type, Year, imdbID }: Data) => {
           <AiFillPlusCircle />
         </Button>
       </ButtonWrap>
-      {show && <ModalMoreInfo show={show} onClose={onCloseModal} />}
+      {show && (
+        <ModalMoreInfo show={show} movie={imdbID} onClose={onCloseModal} />
+      )}
     </MovieItem>
   );
 };
