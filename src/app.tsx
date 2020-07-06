@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Router } from '@reach/router';
-import { Login } from './pages/Login';
-import { Search } from './pages/Search';
+import { LoginPage } from './pages/Login';
+import { SearchPage } from './pages/Search';
 import Context from './Context';
 
 import { GlobalStyle } from './global-styles';
@@ -14,7 +14,7 @@ export const App = () => (
           <>
             <GlobalStyle />
             <Router>
-              <Login auth={activateAuth} path="/" />
+              <LoginPage auth={activateAuth} path="/" />
             </Router>
           </>
         );
@@ -23,7 +23,7 @@ export const App = () => (
         <>
           <GlobalStyle />
           <Router>
-            <Search path="/" />
+            <SearchPage path="/" />
           </Router>
         </>
       );

@@ -1,27 +1,12 @@
 import * as React from 'react';
-import { useInputValue } from '../hooks/useInputValue';
+import { Login } from '../components/Login';
+import { Container } from '../containers';
 
-export const Login = (props) => {
+export const LoginPage = (props) => {
   const { auth } = props;
-  const user = useInputValue('');
-  const pass = useInputValue('');
-  const [error, setError] = React.useState(false);
-
-  const sessionValidator = (e) => {
-    e.preventDefault();
-    if (user.value === pass.value && user.value !== '' && pass.value !== '') {
-      sessionStorage.setItem('session', 'Yeah');
-      auth();
-    } else {
-      setError(true);
-    }
-  };
   return (
-    <form onSubmit={sessionValidator}>
-      <input type="text" placeholder="User" {...user} />
-      <input type="password" placeholder="Password" {...pass} />
-      <button type="submit">Iniciar Sesión</button>
-      {`${error ? 'Error en iniciar' : ''}`}
-    </form>
+    <Container head={false}>
+      <Login auth={auth} />
+    </Container>
   );
 };

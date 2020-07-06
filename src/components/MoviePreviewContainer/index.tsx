@@ -21,26 +21,13 @@ export const MovieContainer = ({ data, error }) => {
         </ErrorMessage>
       );
     }
-    return <h2>Busca tus peliculaas favoritas </h2>;
+    return <h2>Busca tus peliculas favoritas </h2>;
   };
 
   return (
     <Context.Consumer>
-      {({ isAuth, favs, addFav }) => {
-        console.log(favs, 'container');
-        return (
-          <MovieWrap>
-            {viewsMoviesInfo(addFav)}
-            <button
-              type="button"
-              onClick={() => {
-                addFav({ coco: 'coco' });
-              }}
-            >
-              cllick
-            </button>
-          </MovieWrap>
-        );
+      {({ favs, addFav }) => {
+        return <MovieWrap {...favs}>{viewsMoviesInfo(addFav)}</MovieWrap>;
       }}
     </Context.Consumer>
   );

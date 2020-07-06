@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
     padding:0; 
     box-sizing:border-box;
     font-weight: normal;
+    outline:none;
   }
 *, *:before, *:after {
   box-sizing: inherit;

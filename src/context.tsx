@@ -19,7 +19,7 @@ const Provider = ({ children }) => {
     addFav: (item) => {
       const newFav = favs;
       newFav.push(item);
-      // localStorage.getItem()
+      localStorage.setItem('favs', JSON.stringify(newFav));
       setFavs(newFav);
     },
   };
